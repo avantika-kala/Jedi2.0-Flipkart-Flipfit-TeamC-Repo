@@ -48,7 +48,50 @@ public class GymOwnerDAOImplementation implements GymOwnerDAOInterface {
 		}
 		return false;
 	}
-	public GymOwner viewProfile(String username, String password) {
+
+	@Override
+	public GymOwner getGymOwnerById(int id) {
+		GymOwner gymOwner = new GymOwner();
+		Connection connection = DBConnection.getConnection();
+		if (connection != null) {
+			try {
+				PreparedStatement preparedStatement = connection
+						.prepareStatement(SqlConstants.JOIN_GYM_OWNER_BY_ID);
+				preparedStatement.setInt(1, id);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet != null) {
+					try {
+						while (resultSet.next()) {
+							gymOwner = new GymOwner();
+							gymOwner.setUserID(resultSet.getInt(1));
+							gymOwner.setUserName(resultSet.getString(2));
+							gymOwner.setAadharCard(resultSet.getString(3));
+							gymOwner.setPanCard(resultSet.getString(4));
+							gymOwner.setGstIN(resultSet.getString(5));
+							gymOwner.setApprovalStatus(resultSet.getInt(6));
+							gymOwner.setName(resultSet.getString(7));
+							gymOwner.setAddress(resultSet.getString(8));
+							gymOwner.setPINCode(resultSet.getString(9));
+							gymOwner.setRole(Constants.ROLE_GYMOWNER);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();resultSet = preparedStatement.executeQuery();
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return gymOwner;
+	}
+	
+	public GymOwner getGymOwnerByUsernamePassword(String username, String password) {
 		UserDAOInterface userDAO = UserDAOImplementation.getInstance();
 		User loggedInUser = userDAO.loginUser(username, password);
 		if(loggedInUser!=null){
@@ -172,7 +215,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDAOInterface {
 		return rowsUpdated;
 	}
 	
-	public void approveAllGymOwners() {
+	public String approveAllGymOwners() {
 		int rowsUpdated = 0;
 		Connection connection = DBConnection.getConnection();
 		if (connection != null) {
@@ -191,11 +234,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDAOInterface {
 				e.printStackTrace();
 			}
 		}
-		if(rowsUpdated > 0) {
-			System.out.println("Gym Owners successfully approved");
-		} else {
-			System.out.println("Gym Owners could not be approved");
-		}
+		return (rowsUpdated + " gym owners approved");
 	}
 
 	public ArrayList<GymOwner> getPendingGymOwnerApprovals() {

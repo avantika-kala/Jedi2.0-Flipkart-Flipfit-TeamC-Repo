@@ -23,8 +23,8 @@ public class CustomerServiceOperation implements CustomerServiceInterface {
 		return customerServiceObj;
 	}
 	@Override
-	public Customer viewProfile(User user) {
-		return CustomerDAOImplementation.getInstance().viewProfile(user.getUserName(), user.getPassword());
+	public Customer getProfile(User user) {
+		return CustomerDAOImplementation.getInstance().getUserByUsernamePassword(user.getUserName(), user.getPassword());
 	}
 	@Override
 	public boolean bookSlot(int gymID, int slotHour, int customerID) {

@@ -45,7 +45,7 @@ public interface GymDAOInterface {
 	 * Approve all the pending gym registration requests
 	 */
 	
-	public void approveAllGymRegistrationRequests();
+	public String approveAllGymRegistrationRequests();
 	
 	/**
 	 * Handle the incoming gym request , whether to approve or reject

@@ -84,8 +84,17 @@ public class GymOwnerServiceOperation implements GymOwnerServiceInterface {
 	}
 	
 	@Override
-	public GymOwner viewProfile(User user) {
-		return GymOwnerDAOImplementation.getInstance().viewProfile(user.getUserName(), user.getPassword());
+	public GymOwner getGymOwnerByUsernamePassword(User user) {
+		return GymOwnerDAOImplementation.getInstance().getGymOwnerByUsernamePassword(user.getUserName(), user.getPassword());
+	}
+
+	@Override
+	public GymOwner getGymOwnerById(int id) {
+		return GymOwnerDAOImplementation.getInstance().getGymOwnerById(id);
+		}
+	
+	public static void main(String args[]) {
+		GymOwnerServiceOperation.getInstance().getGymOwnerById(3);
 	}
 
 }

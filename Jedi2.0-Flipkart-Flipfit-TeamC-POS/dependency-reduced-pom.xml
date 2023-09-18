@@ -20,7 +20,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>com.howtodoinjava.app.App</mainClass>
+                  <mainClass>com.flipkart.rest.FlipfitApp</mainClass>
                 </transformer>
                 <transformer />
               </transformers>

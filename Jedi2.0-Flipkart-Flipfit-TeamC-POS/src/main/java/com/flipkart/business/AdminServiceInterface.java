@@ -16,7 +16,7 @@ public interface AdminServiceInterface {
 	 * Gets List of gym owners waiting for approval
 	 * @return ArrayList<GymOwner>
 	 */
-	public ArrayList<GymOwner> getPendingGymOwnerApprovals();
+	public ArrayList<GymOwner> getPendingGymOwnerRequests();
 
 	/**
 	 * Approves Gym as provided by gymId
@@ -29,7 +29,7 @@ public interface AdminServiceInterface {
 	/**
 	 * Approves all the Gyms waiting for approval
 	 */
-	public void approveAllGymRegistrationRequests();
+	public String approveAllGymRegistrationRequests();
 
 	/**
 	 * Gets List of gyms waiting for approval
@@ -42,10 +42,10 @@ public interface AdminServiceInterface {
 	 * @param gymOwnerId
 	 * @param status
 	 */
-	public void handleGymOwnerRequest(int gymOwnerId, int status);
+	public String handleGymOwnerRequest(int gymOwnerId, int status);
 
 	/**
 	 * Approves all gym owners
 	 */
-	public void approveAllGymOwners();
+	public String approveAllGymOwners();
 }

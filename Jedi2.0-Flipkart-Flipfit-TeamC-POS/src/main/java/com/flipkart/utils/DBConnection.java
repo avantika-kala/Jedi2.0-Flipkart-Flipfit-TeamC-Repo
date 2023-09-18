@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * @author avantika
+ * @author avantika.kala
  */
 public class DBConnection {
 	private static Connection connection = null;
@@ -24,28 +24,17 @@ public class DBConnection {
 				return connection;
 			} else {
 				try {
-					Properties prop = new Properties(); // Properties is used to read files
-					InputStream inputStream = DBConnection.class.getClassLoader()
-							.getResourceAsStream("./config.properties");
-					prop.load(inputStream);
-					String driver = prop.getProperty("driver");
-					String url = prop.getProperty("url");
-					String user = prop.getProperty("user");
-					String password = prop.getProperty("password");
+					String driver = "com.mysql.jdbc.Driver";
+					String url = "jdbc:mysql://localhost:3306/flipfit";
+					String user = "root";
+					String password = "password";
 					Class.forName(driver);
 					connection = DriverManager.getConnection(url, user, password);
 				} catch (ClassNotFoundException e) {
 					e.printStackTrace();
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;

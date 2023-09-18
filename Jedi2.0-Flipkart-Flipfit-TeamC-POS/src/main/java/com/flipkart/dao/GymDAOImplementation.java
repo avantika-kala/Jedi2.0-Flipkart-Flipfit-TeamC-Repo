@@ -223,7 +223,7 @@ public class GymDAOImplementation implements GymDAOInterface {
 
 
 	@Override
-	public void approveAllGymRegistrationRequests() {
+	public String approveAllGymRegistrationRequests() {
 
 		int rowsUpdated = 0;
 		Connection connection = DBConnection.getConnection();
@@ -243,11 +243,8 @@ public class GymDAOImplementation implements GymDAOInterface {
 				e.printStackTrace();
 			}
 		}
-		if(rowsUpdated > 0) {
-			System.out.println("All gyms approved!");
-		} else {
-			System.out.println("All gyms could not be approved!");
-		}
+
+		return (rowsUpdated + " gyms approved");
 
 
 	}

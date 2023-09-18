@@ -9,12 +9,12 @@ import com.flipkart.bean.Customer;
 import com.flipkart.bean.User;
 import com.flipkart.constants.SqlConstants;
 import com.flipkart.utils.DBConnection;
+
 /**
  * @author rohit.r10
  * 
  **/
 public class CustomerDAOImplementation implements CustomerDAOInterface {
-	
 
 	private static CustomerDAOInterface customerDaoObj = null;
 
@@ -29,10 +29,43 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 	}
 
 	@Override
-	public Customer viewProfile(String username, String password) {
+	public Customer getUserByUserId(int id) {
+		Connection connection = DBConnection.getConnection();
+		Customer customer = null;
+		if (connection != null) {
+			try {
+				String selectQuery = SqlConstants.SELECT_CUSTOMER + SqlConstants.WHERE_ID;
+				PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
+				preparedStatement.setInt(1, id);
+				ResultSet rs = preparedStatement.executeQuery();
+				while (rs.next()) {
+					// Retrieve by column name
+					rs.getInt("ID");
+					String name = rs.getString("name");
+					customer.setName(name);
+					int age = rs.getInt("age");
+					customer.setAge(age);
+					String location = rs.getString("location");
+					customer.setLocation(location);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return customer;
+	}
+
+	@Override
+	public Customer getUserByUsernamePassword(String username, String password) {
 		UserDAOInterface userDAO = UserDAOImplementation.getInstance();
 		User loggedInUser = userDAO.loginUser(username, password);
-		if(loggedInUser!=null){
+		if (loggedInUser != null) {
 			Customer customer = new Customer();
 			customer.setUserID(loggedInUser.getUserID());
 			customer.setUserName(loggedInUser.getUserName());
@@ -42,17 +75,17 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 				try {
 					String selectQuery = SqlConstants.SELECT_CUSTOMER + SqlConstants.WHERE_ID;
 					PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
-					preparedStatement.setInt(1,customer.getUserID());
+					preparedStatement.setInt(1, customer.getUserID());
 					ResultSet rs = preparedStatement.executeQuery();
-					while(rs.next()){
-						 //Retrieve by column name
-						 rs.getInt("ID");
-						 String name = rs.getString("name");
-						 customer.setName(name);
-						 int age = rs.getInt("age");
-						 customer.setAge(age);
-						 String location = rs.getString("location");
-						 customer.setLocation(location);
+					while (rs.next()) {
+						// Retrieve by column name
+						rs.getInt("ID");
+						String name = rs.getString("name");
+						customer.setName(name);
+						int age = rs.getInt("age");
+						customer.setAge(age);
+						String location = rs.getString("location");
+						customer.setLocation(location);
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -72,19 +105,20 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 	@Override
 	public boolean register(Customer customer) {
 		UserDAOInterface userDAO = UserDAOImplementation.getInstance();
-		if(userDAO.register(customer) > 0) {
-			User user  = userDAO.loginUser(customer.getUserName(), customer.getPassword());
+		if (userDAO.register(customer) > 0) {
+			User user = userDAO.loginUser(customer.getUserName(), customer.getPassword());
 			customer.setUserID(user.getUserID());
-			
-			if(insert(customer) > 0) {
+
+			if (insert(customer) > 0) {
 				System.out.println("Customer has been registered successfully");
 				return true;
-			}else {
+			} else {
 				return false;
 			}
 		}
 		return false;
 	}
+
 	@Override
 	public int insert(Customer customer) {
 		int rowsUpdated = 0;

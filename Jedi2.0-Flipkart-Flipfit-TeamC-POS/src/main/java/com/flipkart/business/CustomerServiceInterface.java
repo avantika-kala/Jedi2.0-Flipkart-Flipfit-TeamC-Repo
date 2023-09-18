@@ -19,7 +19,7 @@ public interface CustomerServiceInterface {
 	 * @param user
 	 * @return Customer
 	 */
-	public Customer viewProfile(User user);
+	public Customer getProfile(User user);
 	
 	/**
 	 * Books a slot for the customer

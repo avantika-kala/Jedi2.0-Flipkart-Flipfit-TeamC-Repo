@@ -28,27 +28,30 @@ public class AdminServiceOperation implements AdminServiceInterface {
 	}
 
 	@Override
-	public void handleGymOwnerRequest(int gymOwnerId, int status) {
-		
-		boolean gymIdExists = false;
-		
-		gymIdExists = getPendingGymOwnerApprovals().stream().filter(owner -> owner.getUserID() == (gymOwnerId)).count() > 0;
-		
-		if(!gymIdExists) { System.out.println("Gym Owner ID " + gymOwnerId + " could not be found!") ; return;}
-			
-		int flag = GymOwnerDAOImplementation.getInstance().handleGymOwnerRequest(gymOwnerId, status);
-		
-		if (flag > 0) {
-			System.out.println("Gym Owner ID " + gymOwnerId + " updated!");
-		} else {
-			System.out.println("Gym Owner ID " + gymOwnerId + " could not be udpated!");
-		}
+	public ArrayList<GymOwner> getPendingGymOwnerRequests() {
+		return GymOwnerDAOImplementation.getInstance().getPendingGymOwnerApprovals();
+
 	}
 
 	@Override
-	public ArrayList<GymOwner> getPendingGymOwnerApprovals() {
-		return GymOwnerDAOImplementation.getInstance().getPendingGymOwnerApprovals();
+	public String handleGymOwnerRequest(int gymOwnerId, int status) {
 
+		boolean gymIdExists = false;
+
+		gymIdExists = getPendingGymOwnerRequests().stream().filter(owner -> owner.getUserID() == (gymOwnerId))
+				.count() > 0;
+
+		if (!gymIdExists) {
+			return ("Gym Owner ID " + gymOwnerId + " could not be found!");
+		}
+
+		int flag = GymOwnerDAOImplementation.getInstance().handleGymOwnerRequest(gymOwnerId, status);
+
+		if (flag > 0) {
+			return "Gym Owner ID " + gymOwnerId + " updated!";
+		} else {
+			return "Gym Owner ID " + gymOwnerId + " could not be udpated!";
+		}
 	}
 
 	@Override
@@ -75,14 +78,14 @@ public class AdminServiceOperation implements AdminServiceInterface {
 	}
 
 	@Override
-	public void approveAllGymRegistrationRequests() {
-		GymDAOImplementation.getInstance().approveAllGymRegistrationRequests();
+	public String approveAllGymRegistrationRequests() {
+		return GymDAOImplementation.getInstance().approveAllGymRegistrationRequests();
 
 	}
 
 	@Override
-	public void approveAllGymOwners() {
-		GymOwnerDAOImplementation.getInstance().approveAllGymOwners();
+	public String approveAllGymOwners() {
+		return GymOwnerDAOImplementation.getInstance().approveAllGymOwners();
 	}
 
 }

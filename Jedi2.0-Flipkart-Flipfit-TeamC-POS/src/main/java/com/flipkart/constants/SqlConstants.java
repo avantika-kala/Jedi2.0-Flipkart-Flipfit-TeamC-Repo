@@ -21,6 +21,11 @@ public class SqlConstants {
 			+ "FROM GymOwner\n"
 			+ "JOIN User\n"
 			+ "ON GymOwner.ID = User.ID";
+	public static final String JOIN_GYM_OWNER_BY_ID = "SELECT GymOwner.ID, username, aadharcard, pancard, gstin, isApproved, name, address, pincode\n"
+			+ "FROM GymOwner\n"
+			+ "JOIN User\n"
+			+ "ON GymOwner.ID = User.ID\n"
+			+ "WHERE GymOwner.ID=(?)";
 
 	// Gym
 	public static final String TABLE_GYM = "GYM";

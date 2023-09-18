@@ -20,7 +20,17 @@ public interface CustomerDAOInterface {
 	 * @return customer fetched from the database
 	 */
 	
-	public Customer viewProfile(String username, String password);
+	public Customer getUserByUsernamePassword(String username, String password);
+
+	/**
+	 * Fetch the customer profile information from the database
+	 * @param username
+	 * @param password
+	 * @return customer fetched from the database
+	 */
+	
+	public Customer getUserByUserId(int id);
+	
 	
 	/**
 	 * Register the customer

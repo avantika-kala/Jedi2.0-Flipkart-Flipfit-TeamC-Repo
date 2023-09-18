@@ -37,5 +37,11 @@ public interface GymOwnerServiceInterface {
 	 * @param user
 	 * @return GymOwner
 	 */
-	public GymOwner viewProfile(User user);
+	public GymOwner getGymOwnerByUsernamePassword(User user);
+	/**
+	 * Returns Gym Owner's Profile
+	 * @param user
+	 * @return GymOwner
+	 */
+	public GymOwner getGymOwnerById(int id);
 }

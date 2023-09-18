@@ -22,7 +22,17 @@ public interface GymOwnerDAOInterface {
 	 * @return the profile information found in the database
 	 */
 	
-	GymOwner viewProfile(String username, String password);
+	GymOwner getGymOwnerByUsernamePassword(String username, String password);
+	
+	/**
+	 * Fetch the profile information from the database
+	 * @param username
+	 * @param password
+	 * @return the profile information found in the database
+	 */
+	
+	GymOwner getGymOwnerById(int id);
+
 	
 	/**
 	 * Register a new gym owner
@@ -67,5 +77,5 @@ public interface GymOwnerDAOInterface {
 	 * Approve all the pending gym owners requests in the database
 	 */
 	
-	void approveAllGymOwners();
+	String approveAllGymOwners();
 }
