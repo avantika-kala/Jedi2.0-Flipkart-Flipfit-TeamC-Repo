@@ -5,6 +5,7 @@ import com.flipkart.business.AdminServiceOperation;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.MediaType;
 
@@ -21,12 +22,13 @@ public class AdminRESTController {
 		return Response.ok(AdminServiceOperation.getInstance().getPendingGymOwnerRequests()).build();
 	}
 
-	public Response handleGymRegistrationRequest(int gymId, int status) {
-		return null;
-		// TODO
+	@GET
+	@Path("/handleGymRegistrationRequest")
+	public Response handleGymRegistrationRequest(@QueryParam("gymId") Integer gymId,
+			@QueryParam("status") Integer status) {
+		return Response.ok(AdminServiceOperation.getInstance().handleGymRegistrationRequest(gymId, status)).build();
 	}
 
-	
 	@GET
 	@Path("/approveAllGymOwners")
 	public Response approveAllGymOwners() {
@@ -38,12 +40,15 @@ public class AdminRESTController {
 	public Response getPendingGymRegistrationRequests() {
 		return Response.ok(AdminServiceOperation.getInstance().getPendingGymRegistrationRequests()).build();
 	}
-
-	public Response handleGymOwnerRequest(int gymOwnerId, int status) {
-		return null;
+	
+	@GET
+	@Path("/handleGymOwnerRequest")
+	public Response handleGymOwnerRequest(@QueryParam("gymId") Integer gymOwnerId,
+			@QueryParam("status") Integer status) {
+		return Response.ok(AdminServiceOperation.getInstance().handleGymOwnerRequest(gymOwnerId, status)).build();
 
 	}
-	
+
 	@GET
 	@Path("/approveAllGymRegistrationRequests")
 	public Response approveAllGymRegistrationRequests() {

@@ -3,7 +3,6 @@
  */
 package com.flipkart.rest;
 
-import com.flipkart.business.CustomerServiceOperation;
 import com.flipkart.business.GymServiceOperation;
 
 import jakarta.ws.rs.GET;

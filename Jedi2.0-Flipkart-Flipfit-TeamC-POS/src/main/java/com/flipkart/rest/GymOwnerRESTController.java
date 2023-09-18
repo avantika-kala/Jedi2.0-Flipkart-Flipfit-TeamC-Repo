@@ -33,9 +33,8 @@ public class GymOwnerRESTController {
 	}
 	
 	@GET
-	@Path("/{id}")
-	public Response getProfile(@PathParam("id") Integer id) {
-		
+	@Path("/profile/{id}")
+	public Response getProfile(@PathParam("id") Integer id) {		
 		return Response.ok(GymOwnerServiceOperation.getInstance().getGymOwnerById(id)).build();
 	}
 	@GET
