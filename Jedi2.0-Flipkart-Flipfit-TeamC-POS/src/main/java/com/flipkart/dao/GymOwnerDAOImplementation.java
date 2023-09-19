@@ -261,6 +261,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDAOInterface {
 							gymOwner.setAddress(resultSet.getString(8));
 							gymOwner.setPINCode(resultSet.getString(9));
 							gymOwner.setRole(Constants.ROLE_GYMOWNER);
+							gymOwner.setPassword("xxxxxxxx");
 							pendingGymOwnerList.add(gymOwner);
 						}
 					} catch (SQLException e) {

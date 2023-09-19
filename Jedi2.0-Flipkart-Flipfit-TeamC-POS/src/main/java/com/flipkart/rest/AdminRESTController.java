@@ -16,6 +16,10 @@ import jakarta.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class AdminRESTController {
 
+	/**
+	 * Gets all pending gym owners
+	 * @return all Gym owners awaiting approval
+	 */
 	@GET
 	@Path("/getPendingGymOwnerRequest")
 	public Response getPendingGymOwnerApprovals() {
@@ -29,6 +33,12 @@ public class AdminRESTController {
 		}
 	}
 
+	/**
+	 * Approves/Rejects gym
+	 * @param gymId
+	 * @param status
+	 * @return
+	 */
 	@GET
 	@Path("/handleGymRegistrationRequest")
 	public Response handleGymRegistrationRequest(@QueryParam("gymId") Integer gymId,
@@ -41,6 +51,10 @@ public class AdminRESTController {
 		}
 	}
 
+	/**
+	 * Approves all gyms
+	 * @return
+	 */
 	@GET
 	@Path("/approveAllGymOwners")
 	public Response approveAllGymOwners() {
@@ -53,6 +67,10 @@ public class AdminRESTController {
 		}
 	}
 
+	/**
+	 * Gets all gyms pending approval
+	 * @return
+	 */
 	@GET
 	@Path("/getPendingGymRegistrationRequests")
 	public Response getPendingGymRegistrationRequests() {
@@ -64,9 +82,15 @@ public class AdminRESTController {
 		}
 	}
 	
+	/**
+	 * Approves/Rejects a gym registration request
+	 * @param gymOwnerId
+	 * @param status
+	 * @return
+	 */
 	@GET
 	@Path("/handleGymOwnerRequest")
-	public Response handleGymOwnerRequest(@QueryParam("gymId") Integer gymOwnerId,
+	public Response handleGymOwnerRequest(@QueryParam("gymOwnerId") Integer gymOwnerId,
 			@QueryParam("status") Integer status) {
 		try
 		{
@@ -79,6 +103,10 @@ public class AdminRESTController {
 
 	}
 
+	/**
+	 * Approves all the gym registration requests
+	 * @return
+	 */
 	@GET
 	@Path("/approveAllGymRegistrationRequests")
 	public Response approveAllGymRegistrationRequests() {

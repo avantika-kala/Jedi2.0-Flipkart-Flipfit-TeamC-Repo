@@ -64,7 +64,7 @@ public class NotificationDAOImplementation implements NotificationDAOInterface {
 		}
 	}
 
-	public ArrayList<Notification> getNotifications(int userId, String userType) {
+	public ArrayList<Notification> getNotificationsByIDAndType(int userId, String userType) {
 		Connection connection = DBConnection.getConnection();
 		ArrayList<Notification> notificationList = new ArrayList<Notification>();
 		if (connection != null) {

@@ -55,20 +55,18 @@ public class AdminServiceOperation implements AdminServiceInterface {
 	}
 
 	@Override
-	public int handleGymRegistrationRequest(int gymId, int status) {
+	public String handleGymRegistrationRequest(int gymId, int status) {
 		for (Gym gym : getPendingGymRegistrationRequests()) {
 			if (gym.getGymID() == gymId) {
 				int flag = GymDAOImplementation.getInstance().handleGymRequest(gymId, status);
 				if (flag > 0) {
-					System.out.println("Gym ID " + gymId + " updated!");
+					return "Gym ID " + gymId + " updated!";
 				} else {
-					System.out.println("Gym ID " + gymId + " could not be updated!");
+					return "Gym ID " + gymId + " could not be updated!";
 				}
-				return flag;
 			}
 		}
-		System.out.println("Gym ID " + gymId + " could not be found!");
-		return 0;
+		return "Gym ID " + gymId + " could not be found!";
 	}
 
 	@Override

@@ -24,7 +24,7 @@ public interface AdminServiceInterface {
 	 * @param status
 	 * @return int
 	 */
-	public int handleGymRegistrationRequest(int gymId, int status);
+	public String handleGymRegistrationRequest(int gymId, int status);
 
 	/**
 	 * Approves all the Gyms waiting for approval

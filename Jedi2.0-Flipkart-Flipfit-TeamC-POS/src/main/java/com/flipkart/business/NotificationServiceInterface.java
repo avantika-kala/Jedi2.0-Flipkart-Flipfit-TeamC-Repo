@@ -25,5 +25,5 @@ public interface NotificationServiceInterface {
 	 * @param userType
 	 * @return ArrayList
 	 */
-	ArrayList<Notification> viewMyNotifications(User user, String userType);
+	ArrayList<Notification> viewMyNotifications(int userId, String userType);
 }

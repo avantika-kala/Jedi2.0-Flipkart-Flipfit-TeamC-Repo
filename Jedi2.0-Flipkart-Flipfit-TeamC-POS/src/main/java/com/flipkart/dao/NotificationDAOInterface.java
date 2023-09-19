@@ -21,5 +21,5 @@ public interface NotificationDAOInterface {
 	 * @param userType
 	 * @return List containing all the notifications related to a user
 	 */
-	public ArrayList<Notification> getNotifications(int userId, String userType);
+	public ArrayList<Notification> getNotificationsByIDAndType(int userId, String userType);
 }

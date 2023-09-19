@@ -24,6 +24,7 @@ com/flipkart/constants/Constants.class
 com/flipkart/dao/UserDAOImplementation.class
 com/flipkart/dao/NotificationDAOImplementation.class
 com/flipkart/dao/GymOwnerDAOImplementation.class
+com/flipkart/rest/UserRESTController.class
 com/flipkart/rest/GymOwnerRESTController.class
 com/flipkart/dao/CustomerDAOImplementation.class
 com/flipkart/bean/GymOwner.class

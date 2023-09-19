@@ -13,7 +13,9 @@ import com.flipkart.bean.Customer;
 import com.flipkart.bean.User;
 
 import jakarta.ws.rs.POST;
-
+/**
+ * @author avantika.kala
+ */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public class UserRESTController {

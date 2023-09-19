@@ -33,8 +33,8 @@ public class NotificationServiceOperation implements NotificationServiceInterfac
 	}
 
 	@Override
-	public ArrayList<Notification> viewMyNotifications(User user, String userType) {
-		return NotificationDAOImplementation.getInstance().getNotifications(user.getUserID(), userType);
+	public ArrayList<Notification> viewMyNotifications(int userId, String userType) {
+		return NotificationDAOImplementation.getInstance().getNotificationsByIDAndType(userId, userType);
 	}
 
 }
