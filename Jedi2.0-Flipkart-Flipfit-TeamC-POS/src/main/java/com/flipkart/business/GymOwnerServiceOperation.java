@@ -55,12 +55,6 @@ public class GymOwnerServiceOperation implements GymOwnerServiceInterface {
 		int gymID = sc.nextInt();
 		Gym gym = registeredGyms.stream().filter(curr -> curr.getGymID() == gymID).findAny().orElse(null);
 
-//		for(Gym curr : registeredGyms) {
-//			if(curr.getGymID() == gymID) {
-//				gym = curr;
-//				break;
-//			}
-//		}
 		
 		
 		if(gym != null) {
@@ -94,7 +88,11 @@ public class GymOwnerServiceOperation implements GymOwnerServiceInterface {
 		}
 	
 	public static void main(String args[]) {
-		GymOwnerServiceOperation.getInstance().getGymOwnerById(3);
+//		ArrayList<Gym> registeredGyms = GymOwnerServiceOperation.getInstance().getRegisteredGyms(6);
+//		System.out.println(registeredGyms.size());
+//		for(Gym gym : registeredGyms) {
+//			System.out.println(gym.getGymID());
+//		}
 	}
 
 }

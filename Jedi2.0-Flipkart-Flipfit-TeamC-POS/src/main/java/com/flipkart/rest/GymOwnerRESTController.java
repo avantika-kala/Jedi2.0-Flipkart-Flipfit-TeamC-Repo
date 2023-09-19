@@ -23,9 +23,9 @@ public class GymOwnerRESTController {
 	}
 
 	@GET
-	@Path("/getRegisteredGyms")
-	public Response getRegisteredGyms() {
-		return Response.ok().build();
+	@Path("/getRegisteredGyms/{id}")
+	public Response getRegisteredGyms(@PathParam("id") Integer id) {
+		return Response.ok(GymOwnerServiceOperation.getInstance().getRegisteredGyms(id)).build();
 	}
 
 	public Response addGymSlot() {

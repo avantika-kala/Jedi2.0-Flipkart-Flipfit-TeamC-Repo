@@ -27,7 +27,7 @@ public class DBConnection {
 					String driver = "com.mysql.jdbc.Driver";
 					String url = "jdbc:mysql://localhost:3306/flipfit";
 					String user = "root";
-					String password = "password";
+					String password = "";
 					Class.forName(driver);
 					connection = DriverManager.getConnection(url, user, password);
 				} catch (ClassNotFoundException e) {
