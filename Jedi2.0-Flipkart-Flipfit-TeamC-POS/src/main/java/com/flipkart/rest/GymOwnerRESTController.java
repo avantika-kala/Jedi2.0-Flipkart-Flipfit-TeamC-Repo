@@ -4,9 +4,10 @@
 package com.flipkart.rest;
 
 import com.flipkart.bean.Gym;
+import com.flipkart.bean.TimeSlot;
 import com.flipkart.business.GymOwnerServiceOperation;
 import com.flipkart.business.GymServiceOperation;
-
+import com.flipkart.business.TimeSlotOperation;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -32,8 +33,10 @@ public class GymOwnerRESTController {
 		return Response.ok(GymOwnerServiceOperation.getInstance().getRegisteredGyms(id)).build();
 	}
 	
-	public Response addGymSlot() {
-		return Response.ok().build();
+	@POST
+	@Path("/addGymSlot")
+	public Response addGymSlot(final TimeSlot slot) {
+		return Response.ok(TimeSlotOperation.getInstance().addSlot(slot)).build();
 	}
 	
 	@GET

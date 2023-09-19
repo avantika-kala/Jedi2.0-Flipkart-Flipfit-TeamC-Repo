@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import com.flipkart.bean.Gym;
 import com.flipkart.bean.GymOwner;
+import com.flipkart.bean.TimeSlot;
 import com.flipkart.bean.User;
 import com.flipkart.dao.GymDAOImplementation;
 import com.flipkart.dao.GymOwnerDAOImplementation;
@@ -64,7 +65,11 @@ public class GymOwnerServiceOperation implements GymOwnerServiceInterface {
 			for(int i=1; i<=numberOfSlots; i++) {
 				System.out.println("\nEnter the start hour of slot in 24hrs format ("+i+"/"+numberOfSlots+")");
 				int slotHour = sc.nextInt();
-				boolean isAdded = service.addSlot(slotHour, gym.getGymID(), gym.getNoOfSeats());
+				TimeSlot slot = new TimeSlot();
+				slot.setAvailableSeats(gym.getNoOfSeats());
+				slot.setSlotHour(slotHour);
+				slot.setGymID(gym.getGymID());
+				boolean isAdded = service.addSlot(slot);
 				if(isAdded) {
 					System.out.println(i+"th Slot Added Successfully");
 				}
@@ -92,7 +97,10 @@ public class GymOwnerServiceOperation implements GymOwnerServiceInterface {
 //		System.out.println(registeredGyms.size());
 //		for(Gym gym : registeredGyms) {
 //			System.out.println(gym.getGymID());
+		
 //		}
+//		GymOwner gymOwner = GymOwnerServiceOperation.getInstance().getGymOwnerById(9);
+//		System.out.println(gymOwner.getPanCard());
 	}
 
 }

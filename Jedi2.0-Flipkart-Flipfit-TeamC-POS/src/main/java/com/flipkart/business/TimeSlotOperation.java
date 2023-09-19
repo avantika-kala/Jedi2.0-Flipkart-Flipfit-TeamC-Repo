@@ -29,15 +29,9 @@ public class TimeSlotOperation implements TimeSlotInterface {
 	}
 
 	@Override
-	public boolean addSlot(int slotHour, int gymID, int availableSeats) {
+	public boolean addSlot(TimeSlot slot) {
 		// TODO Auto-generated method stub
-		TimeSlot slot = new TimeSlot();
-		
-		slot.setSlotHour(slotHour);
-		slot.setGymID(gymID);
-		slot.setAvailableSeats(availableSeats);
 		slot.setDay(java.time.LocalDate.now());
-		
 		boolean isAdded = TimeSlotDAOImplementation.getInstance().insertSlot(slot);
 		return isAdded;
 	}

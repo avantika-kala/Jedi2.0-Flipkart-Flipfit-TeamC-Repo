@@ -24,7 +24,7 @@ public interface TimeSlotInterface {
 	 * @param availableSeats
 	 * @return boolean
 	 */
-	public boolean addSlot(int slotHour, int gymID, int availableSeats);
+	public boolean addSlot(TimeSlot slot);
 
 	/**
 	 * Update an existing slot
