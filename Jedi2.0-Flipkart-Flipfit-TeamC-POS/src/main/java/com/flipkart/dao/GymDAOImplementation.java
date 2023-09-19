@@ -53,7 +53,7 @@ public class GymDAOImplementation implements GymDAOInterface {
 				return false;
 			}
 		}
-		System.out.println("# of DB Rows successfully updated: " + rowsUpdated);
+		
 		return true;
 	}
 
