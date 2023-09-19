@@ -20,7 +20,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 /**
- * @author karan
+ * @author karan.k2
  */
 @Path("/gymowner")
 @Produces(MediaType.APPLICATION_JSON)

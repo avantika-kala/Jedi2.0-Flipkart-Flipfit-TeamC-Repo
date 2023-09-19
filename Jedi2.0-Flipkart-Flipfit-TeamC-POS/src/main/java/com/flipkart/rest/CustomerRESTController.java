@@ -3,9 +3,11 @@
  */
 package com.flipkart.rest;
 
+import com.flipkart.bean.TimeSlot;
 import com.flipkart.business.BookingServiceOperation;
 import com.flipkart.business.CustomerServiceOperation;
 import com.flipkart.business.GymServiceOperation;
+import com.flipkart.business.TimeSlotOperation;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -21,7 +23,7 @@ import jakarta.ws.rs.core.Response;
 @Path("/customer")
 @Produces(MediaType.APPLICATION_JSON)
 public class CustomerRESTController {
-
+	
 	@GET
 	@Path("/getAvailableGyms")
 	public Response getAvailableGyms() {
@@ -66,5 +68,13 @@ public class CustomerRESTController {
 	public Response getProfile(@PathParam("id") Integer id) {
 		return Response.ok(CustomerServiceOperation.getInstance().getProfilebyID(id)).build();
 	}
+	
+	@GET
+	@Path("/slots")
+	public Response getAvailableSlots() {
+		return Response.ok(TimeSlotOperation.getInstance().getAllAvailableSlots()).build();
+	}
+	
+	
 	
 }
