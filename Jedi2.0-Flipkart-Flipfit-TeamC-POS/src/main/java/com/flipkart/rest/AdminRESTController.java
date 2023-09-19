@@ -37,7 +37,7 @@ public class AdminRESTController {
 	 * Approves/Rejects gym
 	 * @param gymId
 	 * @param status
-	 * @return
+	 * @return string
 	 */
 	@GET
 	@Path("/handleGymRegistrationRequest")
@@ -53,7 +53,7 @@ public class AdminRESTController {
 
 	/**
 	 * Approves all gyms
-	 * @return
+	 * @return string
 	 */
 	@GET
 	@Path("/approveAllGymOwners")
@@ -69,7 +69,7 @@ public class AdminRESTController {
 
 	/**
 	 * Gets all gyms pending approval
-	 * @return
+	 * @return list of gyms
 	 */
 	@GET
 	@Path("/getPendingGymRegistrationRequests")
@@ -86,7 +86,7 @@ public class AdminRESTController {
 	 * Approves/Rejects a gym registration request
 	 * @param gymOwnerId
 	 * @param status
-	 * @return
+	 * @return string
 	 */
 	@GET
 	@Path("/handleGymOwnerRequest")
@@ -105,7 +105,7 @@ public class AdminRESTController {
 
 	/**
 	 * Approves all the gym registration requests
-	 * @return
+	 * @return string
 	 */
 	@GET
 	@Path("/approveAllGymRegistrationRequests")

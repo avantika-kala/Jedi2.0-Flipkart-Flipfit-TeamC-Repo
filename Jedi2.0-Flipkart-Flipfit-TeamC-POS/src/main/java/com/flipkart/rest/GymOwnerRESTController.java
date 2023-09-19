@@ -26,6 +26,11 @@ import jakarta.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 public class GymOwnerRESTController {
 
+	/**
+	 * Adds a new Gyms
+	 * @param gym
+	 * @return string
+	 */
 	@POST
 	@Path("/addNewGym")
 	public Response addNewGym(final Gym gym) {
@@ -36,6 +41,11 @@ public class GymOwnerRESTController {
 		}
 	}
 	
+	/**
+	 * Gets all the notifications for the user
+	 * @param id
+	 * @return notification list 
+	 */
 	@GET
 	@Path("/notifications/{id}/")
 	public Response getNotifications(@PathParam("id") Integer id) {
@@ -47,6 +57,11 @@ public class GymOwnerRESTController {
 		}
 	}
 
+	/**
+	 * Gets registered gyms for id
+	 * @param id
+	 * @return list of gyms
+	 */
 	@GET
 	@Path("/getRegisteredGyms/{id}")
 	public Response getRegisteredGyms(@PathParam("id") Integer id) {
@@ -57,6 +72,11 @@ public class GymOwnerRESTController {
 		}
 	}
 
+	/**
+	 * Adds a time slot for a gym
+	 * @param slot
+	 * @return string
+	 */
 	@POST
 	@Path("/addGymSlot")
 	public Response addGymSlot(final TimeSlot slot) {
@@ -67,6 +87,11 @@ public class GymOwnerRESTController {
 		}
 	}
 
+	/**
+	 * gets user profile
+	 * @param id
+	 * @return user
+	 */
 	@GET
 	@Path("/profile/{id}")
 	public Response getProfile(@PathParam("id") Integer id) {
@@ -77,6 +102,10 @@ public class GymOwnerRESTController {
 		}
 	}
 
+	/**
+	 * Gets list of all the available gyms
+	 * @return list of all the available gyms
+	 */
 	@GET
 	@Path("/getAvailableGyms")
 	public Response getAvailableGyms() {
