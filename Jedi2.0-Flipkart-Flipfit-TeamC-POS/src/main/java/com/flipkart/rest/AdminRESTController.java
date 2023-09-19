@@ -19,40 +19,77 @@ public class AdminRESTController {
 	@GET
 	@Path("/getPendingGymOwnerRequest")
 	public Response getPendingGymOwnerApprovals() {
-		return Response.ok(AdminServiceOperation.getInstance().getPendingGymOwnerRequests()).build();
+		try
+		{
+			return Response.ok(AdminServiceOperation.getInstance().getPendingGymOwnerRequests()).build();
+		}
+		catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 
 	@GET
 	@Path("/handleGymRegistrationRequest")
 	public Response handleGymRegistrationRequest(@QueryParam("gymId") Integer gymId,
 			@QueryParam("status") Integer status) {
-		return Response.ok(AdminServiceOperation.getInstance().handleGymRegistrationRequest(gymId, status)).build();
+		try {
+			return Response.ok(AdminServiceOperation.getInstance().handleGymRegistrationRequest(gymId, status)).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 
 	@GET
 	@Path("/approveAllGymOwners")
 	public Response approveAllGymOwners() {
-		return Response.ok(AdminServiceOperation.getInstance().approveAllGymOwners()).build();
+		try
+		{
+			return Response.ok(AdminServiceOperation.getInstance().approveAllGymOwners()).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 
 	@GET
 	@Path("/getPendingGymRegistrationRequests")
 	public Response getPendingGymRegistrationRequests() {
-		return Response.ok(AdminServiceOperation.getInstance().getPendingGymRegistrationRequests()).build();
+		try {
+			return Response.ok(AdminServiceOperation.getInstance().getPendingGymRegistrationRequests()).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 	
 	@GET
 	@Path("/handleGymOwnerRequest")
 	public Response handleGymOwnerRequest(@QueryParam("gymId") Integer gymOwnerId,
 			@QueryParam("status") Integer status) {
-		return Response.ok(AdminServiceOperation.getInstance().handleGymOwnerRequest(gymOwnerId, status)).build();
+		try
+		{
+			return Response.ok(AdminServiceOperation.getInstance().handleGymOwnerRequest(gymOwnerId, status)).build();
+
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 
 	}
 
 	@GET
 	@Path("/approveAllGymRegistrationRequests")
 	public Response approveAllGymRegistrationRequests() {
-		return Response.ok(AdminServiceOperation.getInstance().approveAllGymRegistrationRequests()).build();
+		try
+		{
+			return Response.ok(AdminServiceOperation.getInstance().approveAllGymRegistrationRequests()).build();
+
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 
 	}
 

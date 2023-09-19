@@ -26,6 +26,7 @@ public class FlipfitApp extends Application<Configuration> {
 		e.jersey().register(new AdminRESTController());
 		e.jersey().register(new GymOwnerRESTController());
 		e.jersey().register(new CustomerRESTController());
+		e.jersey().register(new UserRESTController());
 		//e.healthChecks().register("application", new ApplicationHealthCheck());
 		
 	}

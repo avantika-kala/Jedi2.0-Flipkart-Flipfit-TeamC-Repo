@@ -24,29 +24,54 @@ public class GymOwnerRESTController {
 	@POST
 	@Path("/addNewGym")
 	public Response addNewGym(final Gym gym) {
+		try {
 		return Response.ok(GymOwnerServiceOperation.getInstance().addGymCentre(gym)).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 
 	@GET
 	@Path("/getRegisteredGyms/{id}")
 	public Response getRegisteredGyms(@PathParam("id") Integer id) {
-		return Response.ok(GymOwnerServiceOperation.getInstance().getRegisteredGyms(id)).build();
+		try {
+			return Response.ok(GymOwnerServiceOperation.getInstance().getRegisteredGyms(id)).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 	
 	@POST
 	@Path("/addGymSlot")
 	public Response addGymSlot(final TimeSlot slot) {
+		try {
 		return Response.ok(TimeSlotOperation.getInstance().addSlot(slot)).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 	
 	@GET
 	@Path("/profile/{id}")
-	public Response getProfile(@PathParam("id") Integer id) {		
+	public Response getProfile(@PathParam("id") Integer id) {	
+		try {
 		return Response.ok(GymOwnerServiceOperation.getInstance().getGymOwnerById(id)).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 	@GET
 	@Path("/getAvailableGyms")
 	public Response getAvailableGyms() {
-		return Response.ok(GymServiceOperation.getInstance().viewGymList()).build();
+		try {
+			return Response.ok(GymServiceOperation.getInstance().viewGymList()).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
 	}
 }
