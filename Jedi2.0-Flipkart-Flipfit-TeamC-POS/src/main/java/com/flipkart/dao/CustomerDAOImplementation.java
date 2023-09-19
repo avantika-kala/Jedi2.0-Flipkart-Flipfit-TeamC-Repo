@@ -114,6 +114,7 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 		if (userDAO.register(customer) > 0) {
 			User user = userDAO.loginUser(customer.getUserName(), customer.getPassword());
 			customer.setUserID(user.getUserID());
+			customer.setRole(Constants.ROLE_CUSTOMER);
 
 			if (insert(customer) > 0) {
 				System.out.println("Customer has been registered successfully");

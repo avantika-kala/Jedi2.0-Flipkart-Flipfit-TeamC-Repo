@@ -38,6 +38,7 @@ public class GymOwnerDAOImplementation implements GymOwnerDAOInterface {
 		if(userDAO.register(gymowner) > 0) {
 			User user  = userDAO.loginUser(gymowner.getUserName(), gymowner.getPassword());
 			gymowner.setUserID(user.getUserID());
+			gymowner.setRole(Constants.ROLE_GYMOWNER);
 			
 			if(insert(gymowner) > 0) {
 				System.out.println("GymOwner has been registered and sent for approval!!");

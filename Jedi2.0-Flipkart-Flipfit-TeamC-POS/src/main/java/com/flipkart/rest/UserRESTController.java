@@ -10,6 +10,7 @@ import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import com.flipkart.bean.Customer;
+import com.flipkart.bean.GymOwner;
 import com.flipkart.bean.User;
 
 import jakarta.ws.rs.POST;
@@ -32,10 +33,21 @@ public class UserRESTController {
 	}
 
 	@POST
-	@Path("/register")
-	public Response getRegisteredGyms(Customer customer) {
+	@Path("/register/customer")
+	public Response register(Customer customer) {
 		try {
 			return Response.ok(UserServiceOperation.getInstance().customerRegistration(customer)).build();
+		}catch(Exception e)
+		{
+			return Response.serverError().build();
+		}
+	}
+	
+	@POST
+	@Path("/register/gymowner")
+	public Response register(GymOwner gymowner) {
+		try {
+			return Response.ok(UserServiceOperation.getInstance().gymOwnerRegistration(gymowner)).build();
 		}catch(Exception e)
 		{
 			return Response.serverError().build();
