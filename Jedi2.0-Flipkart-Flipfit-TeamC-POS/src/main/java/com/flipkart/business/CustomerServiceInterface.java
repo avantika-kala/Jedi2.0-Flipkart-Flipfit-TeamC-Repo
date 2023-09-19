@@ -28,7 +28,7 @@ public interface CustomerServiceInterface {
 	 * @param customerID
 	 * @return boolean
 	 */
-	public boolean bookSlot(int gymID, int slotHour, int customerID);
+	public String bookSlot(int gymID, int slotHour, int customerID);
 
 	/**
 	 * Cancels a slot for the customer

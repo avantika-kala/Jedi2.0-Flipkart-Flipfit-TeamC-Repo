@@ -31,7 +31,7 @@ public class CustomerServiceOperation implements CustomerServiceInterface {
 		return CustomerDAOImplementation.getInstance().getUserByUserId(userId);
 	}
 	@Override
-	public boolean bookSlot(int gymID, int slotHour, int customerID) {
+	public String bookSlot(int gymID, int slotHour, int customerID) {
 		// TODO Auto-generated method stub
 		TimeSlot slot = TimeSlotOperation.getInstance().findSlot(slotHour, gymID);
 		if(slot!=null) {
@@ -40,10 +40,10 @@ public class CustomerServiceOperation implements CustomerServiceInterface {
 			}
 			BookingServiceOperation.getInstance().addBooking(slot.getSlotID(), customerID);
 			System.out.println("\033[1mYou have succesfully booked your slot.\033[0m");
-			return true;
+			return "You have succesfully booked your slot";
 		}
 		System.out.println("\033[1mSlot Unavailable!\033[0m");
-		return false;
+		return "Slot Unavailable!";
 	}
 
 	@Override

@@ -31,7 +31,7 @@ public class TimeSlotOperation implements TimeSlotInterface {
 	public TimeSlot findSlot(int slotHour, int gymID) {
 		// TODO Auto-generated method stub
 		TimeSlot availableSlot = TimeSlotDAOImplementation.getInstance().findSlot(slotHour, gymID);
-		if(availableSlot.getAvailableSeats() > 0) return availableSlot;
+		if(availableSlot!=null && availableSlot.getAvailableSeats() > 0) return availableSlot;
 		return null;
 	}
 
