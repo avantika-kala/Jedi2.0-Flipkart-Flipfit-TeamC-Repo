@@ -10,6 +10,11 @@ public class SqlConstants {
 	public static final String SELECT_CUSTOMER = "SELECT * FROM " + TABLE_CUSTOMER;
 	public static final String INSERT_CUSTOMER = "INSERT INTO " + TABLE_CUSTOMER
 			+ " (ID, NAME, AGE, LOCATION) " + " VALUES (?, ?, ?, ?)";
+	public static final String JOIN_CUSTOMER_BY_ID = "SELECT Customer.ID, username, password, name, age, location\n"
+			+ "FROM Customer\n"
+			+ "JOIN User\n"
+			+ "ON Customer.ID = User.ID\n"
+			+ "WHERE Customer.ID=(?)";
 	
 	// GymOwner
 	public static final String TABLE_GYM_OWNER = "GYMOWNER";

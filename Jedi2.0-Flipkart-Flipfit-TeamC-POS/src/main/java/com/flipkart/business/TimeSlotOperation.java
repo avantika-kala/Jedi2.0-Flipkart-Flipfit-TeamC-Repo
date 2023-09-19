@@ -19,7 +19,14 @@ public class TimeSlotOperation implements TimeSlotInterface {
 
 		return timeSlotServiceObj;
 	}
-
+	@Override
+	public TimeSlot findSlotByID(int slotID) {
+		// TODO Auto-generated method stub
+		TimeSlot availableSlot = TimeSlotDAOImplementation.getInstance().getSlotByID(slotID);
+		if(availableSlot.getAvailableSeats() > 0) return availableSlot;
+		return null;
+	}
+	
 	@Override
 	public TimeSlot findSlot(int slotHour, int gymID) {
 		// TODO Auto-generated method stub

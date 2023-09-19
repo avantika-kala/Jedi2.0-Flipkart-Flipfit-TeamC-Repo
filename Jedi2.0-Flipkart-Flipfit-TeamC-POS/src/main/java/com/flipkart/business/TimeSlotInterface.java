@@ -40,5 +40,11 @@ public interface TimeSlotInterface {
 	 * @return ArrayList
 	 */
 	public ArrayList<TimeSlot> getAllAvailableSlots();
+	/**
+	 * returns timeslot by ID
+	 * @param slotID
+	 * @return
+	 */
+	public TimeSlot findSlotByID(int slotID);
 	
 }

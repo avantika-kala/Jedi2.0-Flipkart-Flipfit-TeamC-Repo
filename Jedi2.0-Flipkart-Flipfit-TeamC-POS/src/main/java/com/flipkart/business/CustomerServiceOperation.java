@@ -27,6 +27,10 @@ public class CustomerServiceOperation implements CustomerServiceInterface {
 		return CustomerDAOImplementation.getInstance().getUserByUsernamePassword(user.getUserName(), user.getPassword());
 	}
 	@Override
+	public Customer getProfilebyID(int userId) {
+		return CustomerDAOImplementation.getInstance().getUserByUserId(userId);
+	}
+	@Override
 	public boolean bookSlot(int gymID, int slotHour, int customerID) {
 		// TODO Auto-generated method stub
 		TimeSlot slot = TimeSlotOperation.getInstance().findSlot(slotHour, gymID);
@@ -58,6 +62,23 @@ public class CustomerServiceOperation implements CustomerServiceInterface {
 			}
 		}
 		return false;
+	}
+	@Override
+	public String cancelSlotByID(int slotID,int userID) {
+		// TODO Auto-generated method stub
+		TimeSlot slot = TimeSlotOperation.getInstance().findSlotByID(slotID);
+		if(slot!=null) {
+			if(BookingServiceOperation.getInstance().removeBooking(slot.getSlotID(), userID)) {
+				TimeSlotOperation.getInstance().updateSlot(slot.getSlotHour(), slot.getGymID(), 1);
+				System.out.println("\033[1mYou have succesfully cancelled your booking.\033[0m");
+				return "You have succesfully cancelled your booking.";
+			}
+			else {
+				System.out.println("\033[1mBooking not found.\033[0m");
+				return "Booking not found.";
+			}
+		}
+		return "Booking not found";
 	}
 
 }

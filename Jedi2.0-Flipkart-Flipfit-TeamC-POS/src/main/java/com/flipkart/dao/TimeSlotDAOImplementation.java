@@ -174,6 +174,7 @@ public class TimeSlotDAOImplementation implements TimeSlotDAOInterface {
 						slot.setSlotHour(resultSet.getInt(2));
 						slot.setGymID(resultSet.getInt(3));
 						slot.setAvailableSeats(resultSet.getInt(4));
+						slot.setDay(resultSet.getDate(5).toLocalDate());
 						return slot;
 					}
 				}

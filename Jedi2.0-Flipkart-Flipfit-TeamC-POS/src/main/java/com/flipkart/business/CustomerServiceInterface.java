@@ -38,4 +38,18 @@ public interface CustomerServiceInterface {
 	 * @return boolean
 	 */
 	public boolean cancelSlot(int gymID, int slotHour, int customerID);
+	
+	/**
+	 * returns customer by using userId
+	 * @param userId
+	 * @return Customer
+	 */
+	public Customer getProfilebyID(int userId);
+	/**
+	 * cancels Booking
+	 * @param slotID
+	 * @param userID
+	 * @return Boolean
+	 */
+	public String cancelSlotByID(int slotID, int userID);
 }

@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import com.flipkart.bean.Customer;
 import com.flipkart.bean.User;
+import com.flipkart.constants.Constants;
 import com.flipkart.constants.SqlConstants;
 import com.flipkart.utils.DBConnection;
 
@@ -34,19 +35,24 @@ public class CustomerDAOImplementation implements CustomerDAOInterface {
 		Customer customer = null;
 		if (connection != null) {
 			try {
-				String selectQuery = SqlConstants.SELECT_CUSTOMER + SqlConstants.WHERE_ID;
+				String selectQuery = SqlConstants.JOIN_CUSTOMER_BY_ID;
 				PreparedStatement preparedStatement = connection.prepareStatement(selectQuery);
 				preparedStatement.setInt(1, id);
 				ResultSet rs = preparedStatement.executeQuery();
 				while (rs.next()) {
 					// Retrieve by column name
-					rs.getInt("ID");
+					customer = new Customer();
+					customer.setUserID(rs.getInt("ID"));
 					String name = rs.getString("name");
 					customer.setName(name);
 					int age = rs.getInt("age");
 					customer.setAge(age);
 					String location = rs.getString("location");
 					customer.setLocation(location);
+					String username = rs.getString("username");
+					customer.setUserName(username);
+					customer.setPassword("xxxxxxxxxx");
+					customer.setRole(Constants.ROLE_CUSTOMER);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
